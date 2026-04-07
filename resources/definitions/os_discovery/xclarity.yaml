@@ -67,7 +67,7 @@ modules:
                         - { descr: Warning, value: 2, generic: 1 }
                         - { descr: Critical, value: 3, generic: 2 }
                         - { descr: nonRecoverable, value: 4, generic: 2 }
-                    descr: "LENOVO-XCC-MIB::fanDescr + status "
+                    descr: LENOVO-XCC-MIB::fanDescr
         percent:
             data:
                 -
@@ -77,7 +77,10 @@ modules:
                     index: 'fanSpeed.{{ $index }}'
                     descr: LENOVO-XCC-MIB::fanDescr
                     skip_values:
-                        - Offline
+                        -
+                            oid: LENOVO-XCC-MIB::fanSpeed
+                            op: '='
+                            value: Offline
         power:
             data:
                 -
